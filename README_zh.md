@@ -161,6 +161,18 @@ OpenClaw既可以由个人用户部署在本地，也可以由服务商部署在
 
 ---
 
+## 🔧 仓库说明
+
+本仓库保留了原始 ClawAegis 项目的整体架构、主要文档、许可证和作者署名。下面列出的内容是此工作区内追加的工程增强项，用于扩展实际部署与验证能力，不替代原作者的贡献和归属。
+
+- **面向 LLM 的提示词脱敏增强**：在 `message_sending` 出站链路上补充了对密钥、API Key、邮箱、手机号、Bearer 类令牌以及已观测密钥编码变体的脱敏与改写能力。
+- **Managed Overlay 支持**：新增 authority -> live 的受管 overlay 机制，用于处理 OpenClaw 会原子改写的文件（如 `models.json`），并配套 bootstrap 脚本和持久化状态文件。
+- **受保护 Skill 的运行时细化策略**：对已安装受保护 skill 放开只读访问；对受信任 managed skill，在所有路径参数都留在 skill 根内时窄放行 helper 执行；写入、删除、覆盖类操作仍持续拦截。
+- **更完整的测试覆盖**：补充了单元测试、宿主模拟 E2E 以及 Docker smoke E2E，覆盖提示词脱敏、managed overlay、受保护 skill 只读访问、helper 执行和插件加载。
+- **真实部署验证反馈**：当前仓库状态也吸收了面向真实 OpenClaw Docker 部署的加固与运行时验证经验，包括只读根文件系统下的浏览器修复、managed overlay 上线经验，以及面向运维的 runbook 指引。
+
+---
+
 ## 📨 作者
 
 [Xinhao Deng](https://xinhao-deng.github.io), [Xiaohu Du](https://xhdu.github.io), [Jialuo Chen](https://testing4ai.github.io), [Jianan Ma](https://github.com/nninjn), Ruixiao Lin, Yidou Liu, Siyi Cao, Yan Wu, Shiwen Cui, Xiaofang Yang, Changhua Meng, Weiqiang Wang

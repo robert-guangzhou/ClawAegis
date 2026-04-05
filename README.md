@@ -166,6 +166,18 @@ Remotely deployed agents face risks from API key theft, dangerous command execut
 
 ---
 
+## 🔧 Repository Notes
+
+This repository preserves the original ClawAegis architecture, documentation, licensing, and author attribution. The items below are downstream engineering additions made in this workspace and are intended to extend deployment and validation coverage without replacing the original authorship.
+
+- **LLM Prompt Sanitization Enhancements** — Added outbound `message_sending` sanitization for secrets, API keys, email addresses, phone numbers, bearer-style tokens, and encoded secret variants before content reaches the model.
+- **Managed Overlay Support** — Added authority-to-live managed overlay reconciliation for files that OpenClaw rewrites atomically (such as `models.json`), including a bootstrap script and persisted overlay state.
+- **Protected Skill Runtime Refinements** — Added narrow runtime allowances for installed protected skills: read-only skill access remains available, trusted helper execution can be permitted when paths stay inside the skill root, and writes/deletes remain blocked.
+- **Expanded Test Coverage** — Added unit tests, host-simulated E2E tests, and Docker smoke E2E coverage for prompt sanitization, managed overlays, protected skill access, helper execution, and plugin loading.
+- **Deployment Validation Feedback** — The current repository state also reflects hardening and runtime validation work against real OpenClaw Docker deployments, including read-only rootfs browser fixes, managed overlay rollout, and operator-oriented runbook guidance.
+
+---
+
 ## 📨 Authors
 
 [Xinhao Deng](https://xinhao-deng.github.io), [Xiaohu Du](https://xhdu.github.io), [Jialuo Chen](https://testing4ai.github.io), [Jianan Ma](https://github.com/nninjn), Ruixiao Lin, Yidou Liu, Siyi Cao, Yan Wu, Shiwen Cui, Xiaofang Yang, Changhua Meng, Weiqiang Wang
